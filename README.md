@@ -57,6 +57,7 @@
 	~~~
 
 ### Próximo passo é adicionar o datasource na tag jta-data-source do arquivo persistence.xml do projeto Java
+- Exemplo:
 	~~~xml
 	<jta-data-source>java:jboss/datasources/MySQLDS</jta-data-source>
 	~~~
