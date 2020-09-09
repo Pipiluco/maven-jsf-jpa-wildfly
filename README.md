@@ -4,6 +4,7 @@
 		<p>Exemplo: C:\Servidores web\wildfly-17.0.1.Final\modules\system\layers\base\com\mysql\main</p>
 - Adcionar o .jar driver do MySQL na pasta 'main'
 - Criar o arquivo module.xml na pasta main conforme abaixo
+### module.xml
 '''
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="com.mysql">
