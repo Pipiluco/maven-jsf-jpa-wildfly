@@ -16,10 +16,16 @@
 			<p:outputLabel for="name" value="Nome: " />
 			<p:inputText id="name" value="#{userBean.user.name}" />
 
+			<p:outputLabel for="lastName" value="Sobrenome: " />
+			<p:inputText id="lastName" value="#{userBean.user.lastName}" />
+			
+			<p:outputLabel for="email" value="E-mail: " />
+			<p:inputText id="email" value="#{userBean.user.email}" />
+			
 			<p:outputLabel for="password" value="Senha: " />
 			<p:password id="password" value="#{userBean.user.password}" />
 
-			<p:commandButton value="Enviar" icon="ui-icon-star"	action="#{userBean.send}" ajax="false" />
+			<p:commandButton value="Enviar" icon="ui-icon-star"	action="#{userBean.save}" ajax="false" />
 		</p:panelGrid>
 	</h:form>
 </h:body>

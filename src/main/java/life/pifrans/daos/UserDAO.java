@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 import life.pifrans.models.User;
 
 public class UserDAO {
-	private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("maven-jsf-jpa-wildfly");
+	private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MySQLDSPU");
 	private EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 	public User find(String name, String password) {

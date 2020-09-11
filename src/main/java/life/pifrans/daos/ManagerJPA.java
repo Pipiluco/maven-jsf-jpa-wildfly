@@ -1,23 +1,29 @@
 package life.pifrans.daos;
 
+import java.io.Serializable;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Disposes;
+import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class ManagerJPA {
-	private static final String PERSISTENCE_UNIT_MYSQL = "maven-jsf-jpa-wildfly";
-	private static EntityManagerFactory entityManagerFactory;
+@ApplicationScoped
+public class ManagerJPA implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private static final String PERSISTENCE_UNIT_MYSQL = "MySQLDSPU";
 
-	public static EntityManager getEntityManager() {
-		if (entityManagerFactory == null) {
-			entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_MYSQL);
-		}
-		return entityManagerFactory.createEntityManager();
+	@Produces
+	@RequestScoped
+	@MySQLDatabase
+	public EntityManager getEntityManager() {
+		return Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_MYSQL).createEntityManager();
 	}
 
-	public static void close() {
-		if (entityManagerFactory != null) {
-			entityManagerFactory.close();
+	public void close(@Disposes @MySQLDatabase EntityManager entityManager) {
+		if (entityManager.isOpen()) {
+			entityManager.close();
 		}
 	}
 }
